@@ -40,5 +40,17 @@ namespace CSharpDiliOzellikleri.Controllers
             return View("Result",
             (object)String.Format("Kategorisi : {0}", urunum.Kategori));
         }
+        public ViewResult KoleksiyonOlustur()
+        {
+            string[] meyveDizisi = { "elma", "portakal", "armut" };
+            List<int> tamsayiListesi = new List<int> { 10, 20, 30, 40 };
+            Dictionary<string, int> sozlukDizisi = new Dictionary<string, int>
+            {
+                { "elma", 10 },
+                { "portakal", 20 },
+                { "armut", 30 }
+            };
+            return View("Result", (object)meyveDizisi[1]);
+        }
     }
 }
