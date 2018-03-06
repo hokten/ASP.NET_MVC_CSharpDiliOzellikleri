@@ -28,13 +28,15 @@ namespace CSharpDiliOzellikleri.Controllers
         }
         public ViewResult UrunOlustur()
         {
-            // yeni bir urun nesnesi oluştur.
-            Urun urunum = new Urun();
-            urunum.UrunID = 100;
-            urunum.Adi = "Kayık";
-            urunum.Aciklama = "Tek kişilik su taşıtı";
-            urunum.Fiyat = 175M;
-            urunum.Kategori = "Su Sporları";
+            // urun nesnesi kısa ve kolay yolla oluşturuldu
+            Urun urunum = new Urun
+            {
+                UrunID = 100,
+                Adi = "Kayık",
+                Aciklama = "Tek kişilik su taşıtı",
+                Fiyat = 175M,
+                Kategori = "Su Sporları"
+            };
             return View("Result",
             (object)String.Format("Kategorisi : {0}", urunum.Kategori));
         }
