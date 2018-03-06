@@ -128,7 +128,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sepet.cs" />
     <Compile Include="Models\Urun.cs" />
+    <Compile Include="Models\UzantiMetodlar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
