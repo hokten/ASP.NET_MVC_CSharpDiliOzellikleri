@@ -7,10 +7,10 @@ namespace CSharpDiliOzellikleri.Models
 {
     public static class UzantiMetodlar
     {
-        public static decimal ToplamFiyat(this Sepet sepetim)
+        public static decimal ToplamFiyat(this IEnumerable<Urun> urunEnum)
         {
             decimal yekun = 0;
-            foreach (Urun urn in sepetim.Urunler)
+            foreach (Urun urn in urunEnum)
             {
                 yekun += urn.Fiyat;
             }
