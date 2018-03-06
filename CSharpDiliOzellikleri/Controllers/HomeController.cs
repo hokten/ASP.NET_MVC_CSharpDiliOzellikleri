@@ -26,5 +26,17 @@ namespace CSharpDiliOzellikleri.Controllers
             return View("Result",
             (object)String.Format("Ürün adı: {0}", urunIsmi));
         }
+        public ViewResult UrunOlustur()
+        {
+            // yeni bir urun nesnesi oluştur.
+            Urun urunum = new Urun();
+            urunum.UrunID = 100;
+            urunum.Adi = "Kayık";
+            urunum.Aciklama = "Tek kişilik su taşıtı";
+            urunum.Fiyat = 175M;
+            urunum.Kategori = "Su Sporları";
+            return View("Result",
+            (object)String.Format("Kategorisi : {0}", urunum.Kategori));
+        }
     }
 }
