@@ -7,25 +7,10 @@ namespace CSharpDiliOzellikleri.Models
 {
     public class Urun
     {
-        private int urunID;
-        private string adi;
-        private string aciklama;
-        private decimal fiyat;
-        private string kategori;
-        public int UrunID
-        {
-            get { return urunID; }
-            set { urunID = value; }
-        }
-        public string Adi
-        {
-            get { return adi; }
-            set { adi = value; }
-        }
-        public string Aciklama
-        {
-            get { return aciklama; }
-            set { aciklama = value; }
-        }
+        public int UrunID { get; set; }
+        public string Adi { get; set; }
+        public string Aciklama { get; set; }
+        public decimal Fiyat { get; set; }
+        public string Kategori { set; get; }
     }
 }
