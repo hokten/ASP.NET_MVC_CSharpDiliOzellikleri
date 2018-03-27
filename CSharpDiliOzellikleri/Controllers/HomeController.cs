@@ -67,5 +67,30 @@ namespace CSharpDiliOzellikleri.Controllers
             decimal sepetYekunu = sepetim.ToplamFiyat();
             return View("Result", (object)String.Format("Toplam Sepet Fiyatı : {0:c}", sepetYekunu));
         }
+        public ViewResult UzantiMetodlariKullanEnum()
+        {
+            Sepet sepetim = new Sepet
+            {
+                Urunler = new List<Urun>
+                {
+                    new Urun {Adi="Kayık", Fiyat=175M },
+                    new Urun {Adi="Can Yeleği", Fiyat=35M },
+                    new Urun {Adi="Futbol Topu", Fiyat=15M },
+                    new Urun {Adi="Krampon", Fiyat=45M}
+                }
+            };
+
+            Urun[] urunDizisi =
+            {
+                new Urun {Adi="Kayık", Fiyat=175M },
+                new Urun {Adi="Can Yeleği", Fiyat=35M },
+                new Urun {Adi="Futbol Topu", Fiyat=15M },
+                new Urun {Adi="Krampon", Fiyat=45M}
+            };
+
+            decimal sepetYekunu = sepetim.ToplamFiyat();
+            decimal diziYekunu = urunDizisi.ToplamFiyat();
+            return View("Result", (object)String.Format("Toplam Sepet Fiyatı : {0}, Ürün Dizisi Toplamı : {1}", sepetYekunu, diziYekunu));
+        }
     }
 }
