@@ -16,5 +16,16 @@ namespace CSharpDiliOzellikleri.Models
             }
             return yekun;
         }
+        public static IEnumerable<Urun> KategoriyeGoreFiltre(this IEnumerable<Urun> urunEnum, 
+            string filtreKategori)
+        {
+            foreach(Urun urn in urunEnum)
+            {
+                if(urn.Kategori == filtreKategori)
+                {
+                    yield return urn;
+                }
+            }
+        }
     }
 }

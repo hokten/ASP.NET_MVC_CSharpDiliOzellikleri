@@ -9,6 +9,17 @@ namespace CSharpDiliOzellikleri.Controllers
 {
     public class HomeController : Controller
     {
+        private IEnumerable<Urun> sepetim = new Sepet
+        {
+            Urunler = new List<Urun>
+                {
+                    new Urun {Adi="Kayık", Kategori="Spor", Fiyat=175M },
+                    new Urun {Adi="Can Yeleği", Kategori="Sağlık", Fiyat=35M },
+                    new Urun {Adi="Futbol Topu", Kategori="Spor", Fiyat=15M },
+                    new Urun {Adi="Krampon", Kategori="Futbol", Fiyat=45M}
+                }
+        };
+
         // GET: Home
         public string Index()
         {
@@ -54,31 +65,12 @@ namespace CSharpDiliOzellikleri.Controllers
         }
         public ViewResult UzantiMetodlariKullan()
         {
-            Sepet sepetim = new Sepet
-            {
-                Urunler = new List<Urun>
-                {
-                    new Urun {Adi="Kayık", Fiyat=175M },
-                    new Urun {Adi="Can Yeleği", Fiyat=35M },
-                    new Urun {Adi="Futbol Topu", Fiyat=15M },
-                    new Urun {Adi="Krampon", Fiyat=45M}
-                }
-            };
             decimal sepetYekunu = sepetim.ToplamFiyat();
             return View("Result", (object)String.Format("Toplam Sepet Fiyatı : {0:c}", sepetYekunu));
         }
         public ViewResult UzantiMetodlariKullanEnum()
         {
-            Sepet sepetim = new Sepet
-            {
-                Urunler = new List<Urun>
-                {
-                    new Urun {Adi="Kayık", Fiyat=175M },
-                    new Urun {Adi="Can Yeleği", Fiyat=35M },
-                    new Urun {Adi="Futbol Topu", Fiyat=15M },
-                    new Urun {Adi="Krampon", Fiyat=45M}
-                }
-            };
+            
 
             Urun[] urunDizisi =
             {
@@ -91,6 +83,18 @@ namespace CSharpDiliOzellikleri.Controllers
             decimal sepetYekunu = sepetim.ToplamFiyat();
             decimal diziYekunu = urunDizisi.ToplamFiyat();
             return View("Result", (object)String.Format("Toplam Sepet Fiyatı : {0}, Ürün Dizisi Toplamı : {1}", sepetYekunu, diziYekunu));
+        }
+
+        public ViewResult KategoriFiltresi()
+        {
+            decimal toplam_fiyat = 0;
+            foreach(Urun urn in sepetim.KategoriyeGoreFiltre("Spor"))
+            {
+                toplam_fiyat += urn.Fiyat;
+            }
+            return View("Result", (object)String.Format("Toplam Kategori Fiyatı : {0}", toplam_fiyat));
+
+
         }
     }
 }
