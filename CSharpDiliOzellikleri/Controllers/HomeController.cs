@@ -94,7 +94,17 @@ namespace CSharpDiliOzellikleri.Controllers
             }
             return View("Result", (object)String.Format("Toplam Kategori Fiyatı : {0}", toplam_fiyat));
 
+        }
+        public ViewResult KategoriFiltresiFunc()
+        {
+            decimal toplam_fiyat = 0;
+            foreach (Urun urn in sepetim.Filtre(urun => urun.Kategori=="Spor"))
+            {
+                toplam_fiyat += urn.Fiyat;
+            }
+            return View("Result", (object)String.Format("Toplam Kategori Fiyatı : {0}", toplam_fiyat));
 
         }
+
     }
 }

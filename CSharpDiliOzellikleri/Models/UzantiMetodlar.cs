@@ -27,5 +27,17 @@ namespace CSharpDiliOzellikleri.Models
                 }
             }
         }
+
+        public static IEnumerable<Urun> Filtre(
+            this IEnumerable<Urun> urunEnum, Func<Urun, bool> filtreSecimi)
+        {
+            foreach(Urun urn in urunEnum)
+            {
+                if(filtreSecimi(urn))
+                {
+                    yield return urn;
+                }
+            }
+        }
     }
 }
